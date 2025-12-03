@@ -16,7 +16,8 @@ st.set_page_config(page_title="Visualización de datos de Salud de España", pag
 # Subir los datos
 
 @st.cache_data
-def load_data(): df= pd.read_csv("datos/df_final.csv")
+def load_data():
+    df= pd.read_csv("datos/df_final.csv")
     return df
 
 
