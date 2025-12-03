@@ -9,7 +9,6 @@ Original file is located at
 import streamlit as st
 import pandas as pd
 import altair as alt
-pip install streamlit-option-menu
 from streamlit_option_menu import option_menu
 
 # Crear pagina
