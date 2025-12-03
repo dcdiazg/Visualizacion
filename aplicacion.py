@@ -15,12 +15,12 @@ import altair as alt
 
 st.set_page_config(page_title="Visualización de datos de Salud de España", page_icon="⚕", layout="wide")
 
-st.title("⛨ Análisis y Predicicion de datos de Salud")
+st.title("⛨ Análisis y Predicción de datos de Salud")
 
-st.header("Hola! 🤓 Gracias por tu interés en la salud en España!.")
+st.subheader("Hola! 🤓 Gracias por tu interés en la salud en España.")
 
 st.write("""Esta página te permite visualizar resultados de la [Encuesta de Salud de España 2023](https://www.sanidad.gob.es/estadEstudios/estadisticas/encuestaSaludEspana/home.htm).
-    Usa el menú lateral para navegar en los módulos de la salud en España y el de predición tu salud!""")
+    Usa el menú lateral para navegar entre: Visualización de datos y predición de tu salud""")
 
 st.write("""Abajo te dejo algunos datos sobre quienes respondieron esta encuesta""")
 
