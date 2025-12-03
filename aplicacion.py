@@ -24,6 +24,8 @@ def load_data():
     df = pd.read_csv("datos/df_final.csv")
     return df
 
+st.dataframe(df, height=15) #https://www.youtube.com/watch?v=7E3yxq-P-a8
+
 # Crear laterales usando este video como referencia https://www.youtube.com/watch?v=flFy5o-2MvI
 
 with st.sidebar:
@@ -42,10 +44,10 @@ if selected == "Inicio":
     st.write("Gracias por tu interés por la salud en España.")
     st.write("""Esta página te permite visualizar resultados de la 
              [Encuesta de Salud de España 2023](https://www.sanidad.gob.es/estadEstudios/estadisticas/encuestaSaludEspana/home.htm).""")
-     st.write("""Usa el menu lateral para navegar entre: Visualización de datos y predicción de tu salud **percibida**.""")
+    st.write("Usa el menu lateral para navegar entre: Visualización de datos y predicción de tu salud **percibida**.")
     st.subheader("Datos iniciales de la encuesta")
 
-# Resultados
+# Para ver los resultados
 
 if selected == "Ver resultados de la encuesta":
     st.title("Ver resultados de la encuesta")
