@@ -29,8 +29,8 @@ with st.sidebar:
     selected = option_menu(
         menu_title="Menú",
         options=["Inicio", "Ver resultados de la encuesta", "Predecir mi percepción de salud"],
-        icons=["house-heart-fill", "calendar2-heart-fill", "🔮"],
-        menu_icon="	📈",
+        icons=["house-heart-fill", "clipboard-pulse", "stars"],
+        menu_icon="body-text",
         default_index=0
     )
 
