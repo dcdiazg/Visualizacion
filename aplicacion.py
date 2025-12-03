@@ -24,11 +24,20 @@ def load_data():
 
 # Crear los laterales
 
-st.sidebar.title("Navega aqui")
-pagina=st.sidebar.selectbox("Selecciona una página:", ["Inicio","Ver resultadode de la encuesta","Predecir mi salud"])
+if "pagina_actual" not in st.session_state:
+    st.session_state.pagina_actual = "Inicio"
 
 
-if pagina=="Inicio":
+st.sidebar.title("Menú")
+if st.sidebar.button("Inicio"):
+    st.session_state.pagina_actual = "Inicio"
+if st.sidebar.button("Ver resultados de la encuesta"):
+    st.session_state.pagina_actual = "Ver resultados de la encuesta"
+if st.sidebar.button("Predecir mi precepción de salud"):
+    st.session_state.pagina_actual = "Predecir mi precepción de salud"
+
+
+if st.session_state.pagina_actual=="Inicio":
     st.title("Análisis y Predicción de datos de Salud")
     st.subheader("Hola! 🤓")
     st.write("Gracias por tu interés en la salud en España.")
@@ -38,13 +47,13 @@ if pagina=="Inicio":
     st.subheader("""Datos iniciales de la encuesta""")
 
 
-elif(pagina=="Visualización de datos"):
-    st.title("Visualización de datos")
+elif(st.session_state.pagina_actual=="Ver resultados de la encuesta"):
+    st.title("Ver resultados de la encuesta")
     st.write("Aqui encontraras los resultados de la encuesta de salud de España 2023")
     st.subheader("🗺️ Haz clic en una comunidad autónoma")
 
-elif pagina=="Predicción de tu salud":
-    st.title("Predicción de tu salud")
+elif st.session_state.pagina_actual=="Predecir mi precepción de salud":
+    st.title("Predecir mi precepción de saludd")
     st.subheader("Aquí podrás predecir tu salud basados en los datos de la población en España")
     edad=st.slider("Selecciona tu edad",0,100,25)
     st.write("Tu edad es:",edad)
