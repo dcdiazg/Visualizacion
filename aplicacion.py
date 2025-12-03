@@ -9,54 +9,68 @@ Original file is located at
 import streamlit as st
 import pandas as pd
 import altair as alt
+from streamlit_option_menu import option_menu
 
+# Crear pagina
+st.set_page_config(
+    page_title="Visualización de datos de Salud de España",
+    page_icon="⚕",
+    layout="wide"
+)
 
-st.set_page_config(page_title="Visualización de datos de Salud de España", page_icon="⚕", layout="wide")
-
-# Subir los datos
-
+# Subir datos
 @st.cache_data
 def load_data():
-    df= pd.read_csv("datos/df_final.csv")
+    df = pd.read_csv("datos/df_final.csv")
     return df
 
+# Crear laterales
+with st.sidebar:
+    selected = option_menu(
+        menu_title="Menú",
+        options=["Inicio", "Ver resultados de la encuesta", "Predecir mi percepción de salud"],
+        icons=["house-heart-fill", "calendar2-heart-fill", "envelope-heart-fill"],
+        menu_icon="heart",
+        default_index=0
+    )
 
-
-# Crear los laterales
-
-if "pagina_actual" not in st.session_state:
-    st.session_state.pagina_actual = "Inicio"
-
-
-st.sidebar.title("Menú")
-if st.sidebar.button("Inicio"):
-    st.session_state.pagina_actual = "Inicio"
-if st.sidebar.button("Ver resultados de la encuesta"):
-    st.session_state.pagina_actual = "Ver resultados de la encuesta"
-if st.sidebar.button("Predecir mi precepción de salud"):
-    st.session_state.pagina_actual = "Predecir mi precepción de salud"
-
-
-if st.session_state.pagina_actual=="Inicio":
+# Pagina de inicio
+if selected == "Inicio":
     st.title("Análisis y Predicción de datos de Salud")
     st.subheader("Hola! 🤓")
-    st.write("Gracias por tu interés en la salud en España.")
-    st.write("""Esta página te permite visualizar resultados de la [Encuesta de Salud de España 2023](https://www.sanidad.gob.es/estadEstudios/estadisticas/encuestaSaludEspana/home.htm).
-    Usa el menú lateral para navegar entre: Visualización de datos y predición de tu salud""")
+    st.write("Gracias por tu interés por la salud en España.")
+    st.write("""Esta página te permite visualizar resultados de la 
+             [Encuesta de Salud de España 2023](https://www.sanidad.gob.es/estadEstudios/estadisticas/encuestaSaludEspana/home.htm).
+             Usa el menu lateral para navegar entre: Visualización de datos y predicción de tu salud **percibida**.""")
+    st.subheader("Datos iniciales de la encuesta")
 
-    st.subheader("""Datos iniciales de la encuesta""")
+# Resultados
 
-
-elif(st.session_state.pagina_actual=="Ver resultados de la encuesta"):
+if selected == "Ver resultados de la encuesta":
     st.title("Ver resultados de la encuesta")
-    st.write("Aqui encontraras los resultados de la encuesta de salud de España 2023")
+    st.write("Aqui encontrarás los resultados de la encuesta de salud de España 2023")
     st.subheader("🗺️ Haz clic en una comunidad autónoma")
 
-elif st.session_state.pagina_actual=="Predecir mi precepción de salud":
-    st.title("Predecir mi precepción de saludd")
-    st.subheader("Aquí podrás predecir tu salud basados en los datos de la población en España")
-    edad=st.slider("Selecciona tu edad",0,100,25)
-    st.write("Tu edad es:",edad)
-    actividad= st.selectbox("Cual es tu nivel de actividad física?", ["Bajo", "Ocasional", "Regular", "Sendentario"])
-    if st.button("Predecir ahora!"):
-      st.success("Prediccion generada")
+# Cargar datos
+    
+    df = load_data()
+    st.dataframe(df.head()) 
+
+# Sección Predecir percepción de salud
+
+if selected == "Predecir mi percepción de salud":
+    st.title("Predecir mi percepción de salud")
+    st.subheader("Aquí podrás predecir tu salud basado en los datos de la población en España")
+    
+# Entradas de los usuarions
+    
+    edad = st.slider("Selecciona tu edad", 0, 100, 25)
+    st.write("Tu edad es:", edad)
+    
+    actividad = st.selectbox(
+        "¿Cuál es tu nivel de actividad física?",
+        ["Bajo", "Ocasional", "Regular", "Sedentario"]
+    )
+    
+    if st.button("¡Predecir ahora!"):
+        st.success("Predicción generada")
