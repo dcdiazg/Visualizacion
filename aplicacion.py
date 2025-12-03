@@ -10,9 +10,15 @@ Original file is located at
 # Crear  la app
 
 import streamlit as st
+import pandas as pd
+import altair as alt
 
-st.set_page_config(page_title="Visualización de datos de Salud de España", layout="wide")
+st.set_page_config(page_title="Visualización de datos de Salud de España", page_icon="⚕", layout="wide")
 
-st.title("Análisis y Predicicion de datos de Salud")
+st.title("⛨ Análisis y Predicicion de datos de Salud")
 
-st.write("**Hola!**\"Gracias por tu interés! Usa el menú lateral para navegar en los módulos : **1. La salud en España** **2. Predice tu salud!**")
+st.write("""**Hola!**\"Gracias por tu interés en la salud en España!.
+    Esta página te permite visualizar resultados de la [Encuesta de Salud de España 2023](https://www.sanidad.gob.es/estadEstudios/estadisticas/encuestaSaludEspana/home.htm).
+    Usa el menú lateral para navegar en los módulos : **1. La salud en España** **2. Predice tu salud!**""")
+
+## 
