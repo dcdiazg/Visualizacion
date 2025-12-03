@@ -24,7 +24,7 @@ def load_data():
     df = pd.read_csv("datos/df_final.csv")
     return df
 
-df= = load_data()
+df= load_data()
 st.dataframe(df, height=15) #https://www.youtube.com/watch?v=7E3yxq-P-a8
 
 # Crear laterales usando este video como referencia https://www.youtube.com/watch?v=flFy5o-2MvI
