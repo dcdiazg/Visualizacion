@@ -21,7 +21,7 @@ st.set_page_config(
 # Subir datos
 @st.cache_data
 def load_data():
-    df = pd.read_csv("datos/df_final.csv")
+    df = pd.read_csv("datos/df_final.csv", encode= "latin-1")
     return df
 
 df= load_data()
