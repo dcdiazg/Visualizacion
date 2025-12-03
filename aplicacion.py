@@ -9,7 +9,7 @@ Original file is located at
 import streamlit as st
 import pandas as pd
 import altair as alt
-from streamlit_plotly_events import plotly_events
+
 
 st.set_page_config(page_title="Visualización de datos de Salud de España", page_icon="⚕", layout="wide")
 
