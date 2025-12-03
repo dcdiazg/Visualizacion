@@ -24,13 +24,14 @@ def load_data():
     df = pd.read_csv("datos/df_final.csv")
     return df
 
-# Crear laterales
+# Crear laterales usando este video como referencia https://www.youtube.com/watch?v=flFy5o-2MvI
+
 with st.sidebar:
     selected = option_menu(
         menu_title="Menú",
         options=["Inicio", "Ver resultados de la encuesta", "Predecir mi percepción de salud"],
         icons=["house-heart-fill", "calendar2-heart-fill", "envelope-heart-fill"],
-        menu_icon="heart",
+        menu_icon="data",
         default_index=0
     )
 
@@ -40,8 +41,8 @@ if selected == "Inicio":
     st.subheader("Hola! 🤓")
     st.write("Gracias por tu interés por la salud en España.")
     st.write("""Esta página te permite visualizar resultados de la 
-             [Encuesta de Salud de España 2023](https://www.sanidad.gob.es/estadEstudios/estadisticas/encuestaSaludEspana/home.htm).
-             Usa el menu lateral para navegar entre: Visualización de datos y predicción de tu salud **percibida**.""")
+             [Encuesta de Salud de España 2023](https://www.sanidad.gob.es/estadEstudios/estadisticas/encuestaSaludEspana/home.htm).""")
+     st.write("""Usa el menu lateral para navegar entre: Visualización de datos y predicción de tu salud **percibida**.""")
     st.subheader("Datos iniciales de la encuesta")
 
 # Resultados
