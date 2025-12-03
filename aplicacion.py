@@ -9,7 +9,6 @@ Original file is located at
 
 # Crear  la app
 
-!pip install streamlit
 import streamlit as st
 
 st.set_page_config(page_title="Visualización de datos de Salud de España", layout="wide")
