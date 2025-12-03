@@ -9,26 +9,28 @@ Original file is located at
 import streamlit as st
 import pandas as pd
 import altair as alt
+from streamlit_plotly_events import plotly_events
 
 st.set_page_config(page_title="Visualización de datos de Salud de España", page_icon="⚕", layout="wide")
 
+# Subir los datos
 
-
-# Subir los datos para la descriptiva
-
-
+@st.cache_data
+def load_data(): df= pd.read_csv("datos/df_final.csv")
+    return df
 
 
 
 # Crear los laterales
 
 st.sidebar.title("Navega aqui")
-pagina=st.sidebar.radio("Selecciona una página:", ["Inicio","Visualización de datos","Predicción de tu salud"])
+pagina=st.sidebar.selectbox("Selecciona una página:", ["Inicio","Ver resultadode de la encuesta","Predecir mi salud"])
 
 
 if pagina=="Inicio":
-    st.title("⛨ Análisis y Predicción de datos de Salud")
-    st.subheader("Hola! 🤓 Gracias por tu interés en la salud en España.")
+    st.title("Análisis y Predicción de datos de Salud")
+    st.subheader("Hola! 🤓")
+    st.write("Gracias por tu interés en la salud en España.")
     st.write("""Esta página te permite visualizar resultados de la [Encuesta de Salud de España 2023](https://www.sanidad.gob.es/estadEstudios/estadisticas/encuestaSaludEspana/home.htm).
     Usa el menú lateral para navegar entre: Visualización de datos y predición de tu salud""")
 
@@ -38,15 +40,13 @@ if pagina=="Inicio":
 elif(pagina=="Visualización de datos"):
     st.title("Visualización de datos")
     st.write("Aqui encontraras los resultados de la encuesta de salud de España 2023")
-    st.subheader("Salud por sexos")
+    st.subheader("🗺️ Haz clic en una comunidad autónoma")
 
 elif pagina=="Predicción de tu salud":
     st.title("Predicción de tu salud")
     st.subheader("Aquí podrás predecir tu salud basados en los datos de la población en España")
     edad=st.slider("Selecciona tu edad",0,100,25)
     st.write("Tu edad es:",edad)
-    actividad= st.selectbox("Cual es tu nivel de actividad física?"["Bajo", "Ocasional", "Regular", "Sendentario"])
+    actividad= st.selectbox("Cual es tu nivel de actividad física?", ["Bajo", "Ocasional", "Regular", "Sendentario"])
     if st.button("Predecir ahora!"):
       st.success("Prediccion generada")
-    
-  
