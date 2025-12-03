@@ -24,17 +24,13 @@ def load_data():
     df = pd.read_csv("datos/df_final.csv", encoding= "latin-1")
     return df
 
-df= load_data()
-st.dataframe(df, height=15) #https://www.youtube.com/watch?v=7E3yxq-P-a8
-
-# Crear laterales usando este video como referencia https://www.youtube.com/watch?v=flFy5o-2MvI
 
 with st.sidebar:
     selected = option_menu(
         menu_title="Menú",
         options=["Inicio", "Ver resultados de la encuesta", "Predecir mi percepción de salud"],
-        icons=["house-heart-fill", "calendar2-heart-fill", "envelope-heart-fill"],
-        menu_icon="data",
+        icons=["house-heart-fill", "calendar2-heart-fill", "amphora"],
+        menu_icon="chart_with_upwards_trend",
         default_index=0
     )
 
@@ -58,7 +54,7 @@ if selected == "Ver resultados de la encuesta":
 # Cargar datos
     
     df = load_data()
-    st.dataframe(df.head()) 
+    st.dataframe(df.head()) #https://www.youtube.com/watch?v=7E3yxq-P-a8
 
 # Sección Predecir percepción de salud
 
